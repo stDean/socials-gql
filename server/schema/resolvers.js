@@ -1,6 +1,7 @@
+import { postResolver } from "./resolver/post.resolver.js";
+
 export const resolvers = {
   Query: {
-    sayHi: () => "Say Hello",
-    sayNumber: () => 33
+    ...postResolver.Query,
   },
 };
