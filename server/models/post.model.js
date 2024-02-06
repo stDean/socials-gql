@@ -15,8 +15,8 @@ const PostSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
-  },
-  { timestamps: true }
+    createdAt: String
+  }
 );
 
 export default mongoose.model("Post", PostSchema);

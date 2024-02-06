@@ -17,7 +17,6 @@ const start = async () => {
     // connect to db
     await connectDB(process.env.MONGODB_URI);
     const { url } = await startStandaloneServer(server);
-
     console.log(`🚀 Server ready at ${url}`);
   } catch (e) {
     console.log(e.message);
