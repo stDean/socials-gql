@@ -1,8 +1,9 @@
 import { useMutation, gql } from "@apollo/client";
 import { Button, Form } from "semantic-ui-react";
 import { useForm } from "../utils/hooks";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth";
 
 const REGISTER_USER = gql`
   mutation register(
@@ -31,6 +32,7 @@ const REGISTER_USER = gql`
 const Register = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const context = useContext(AuthContext);
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: "",
@@ -40,8 +42,8 @@ const Register = () => {
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(proxy, res) {
-      console.log(res);
+    update(_, { data: { registerUser: userData } }) {
+      context.login(userData);
       navigate("/");
     },
     onError(err) {

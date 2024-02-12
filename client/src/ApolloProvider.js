@@ -5,7 +5,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import App from "./App";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/",
@@ -25,8 +24,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default (
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+export const ApolloWrapper = ({ children }) => (
+  <ApolloProvider client={client}>{children}</ApolloProvider>
 );

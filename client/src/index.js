@@ -1,10 +1,18 @@
 import { createRoot } from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import ApolloProvider from "./ApolloProvider";
-import 'semantic-ui-css/semantic.min.css'
+import { ApolloWrapper } from "./ApolloProvider";
+import "semantic-ui-css/semantic.min.css";
+import { AuthProvider } from "./context/auth";
+import App from "./App";
 
 const root = createRoot(document.getElementById("root"));
-root.render(ApolloProvider);
+root.render(
+  <AuthProvider>
+    <ApolloWrapper>
+      <App />
+    </ApolloWrapper>
+  </AuthProvider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
