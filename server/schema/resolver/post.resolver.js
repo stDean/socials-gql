@@ -33,6 +33,10 @@ export const postResolver = {
         const { body } = args;
         const user = checkAuth({ context: contextValue });
 
+        if(body.trim() === '') {
+          throw new Error("Post body cannot be empty!")
+        }
+
         const post = await Post.create({
           body,
           user: user.id,

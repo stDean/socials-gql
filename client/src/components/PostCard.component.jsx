@@ -4,12 +4,14 @@ import moment from "moment";
 import { LikeButton } from "./LikeButton.component";
 import MyPopup from "../utils/MyPopup";
 import { DeleteButton } from "./DeleteButton.component";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth";
 
 const PostCard = ({ post }) => {
   const { body, createdAt, id, username, likeCount, commentCount, likes } =
     post;
 
-  const user = null;
+  const { user } = useContext(AuthContext);
 
   return (
     <Card fluid>
