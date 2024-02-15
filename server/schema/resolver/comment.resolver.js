@@ -40,8 +40,9 @@ export const commentResolver = {
       }
 
       const commentIdx = post.comments.findIndex(
-        comment => comment.id !== commentId
+        comment => comment.id === commentId
       );
+      
       if (post.comments[commentIdx].username === username) {
         post.comments.splice(commentIdx, 1);
         await post.save();

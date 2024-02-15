@@ -8,7 +8,6 @@ import { FETCH_POSTS_QUERY } from "../utils/fetchPost.query";
 const Home = () => {
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
   const posts = data?.getPosts;
-  console.log(posts);
 
   const { user } = useContext(AuthContext);
 
