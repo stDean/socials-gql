@@ -37,7 +37,7 @@ export const DeleteButton = ({ postId, commentId, callback }) => {
           as="div"
           color="red"
           floated="right"
-          // onClick={() => setConfirmOpen(true)}
+          onClick={() => setConfirmOpen(true)}
         >
           <Icon name="trash" style={{ margin: 0 }} />
         </Button>

@@ -37,7 +37,7 @@ export const postResolver = {
           throw new Error("Post body cannot be empty!")
         }
 
-        const post = await Post.create({
+        const post = await Post.Find({
           body,
           user: user.id,
           username: user.username,
